@@ -15,8 +15,13 @@ logger = logging.getLogger(__name__)
 
 
 PHOTO = [
-    "https://telegra.ph/file/daa0e86574b573c68cd7d.jpg",
-
+    "https://telegra.ph/file/ece048707d9926b776309.jpg",
+    "https://telegra.ph/file/aeb9cf449b84e829ae483.jpg",
+    "https://telegra.ph/file/2fc23b52b071e646682d3.jpg",
+    "https://telegra.ph/file/14258d571d7c614078aa7.jpg",
+    "https://telegra.ph/file/0f15f598d437052eafe20.jpg",
+    "https://telegra.ph/file/65581559887c69fdd7158.jpg",
+    "https://telegra.ph/file/6876f69527f8e4ed1272d.jpg"
 ]
 
 @Client.on_message(filters.private & filters.user(ADMINS) & filters.command(["broadcast"]))
@@ -92,8 +97,8 @@ async def start(bot, cmd):
                     f_caption = f"{files.file_name}"
                 buttons = [
                     [
-                        InlineKeyboardButton('🔍Search again🔎', switch_inline_query_current_chat=''),
-                        InlineKeyboardButton('🤖More Bots🤖', url='https://t.me/tg_bots_updates')
+                        InlineKeyboardButton('💬group💬', url='https://t.me/Filmspoters'),
+                        InlineKeyboardButton('🔎Search Here🔍', switch_inline_query_current_chat='')
                     ]
                     ]
                 await bot.send_cached_media(
@@ -124,18 +129,18 @@ async def start(bot, cmd):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("❔ How To Use Me ❔", url="https://t.me/tg_bots_updates")
+                        InlineKeyboardButton("🔎Search Here🔍", switch_inline_query_current_chat='')
                     ],
                     [
-                        InlineKeyboardButton("🙂 source code", url="https://github.com/Lallu-lallus/ALPHA_IMDB_BOT"),
-                        InlineKeyboardButton("😎 About", callback_data="about")
+                        InlineKeyboardButton("🔊channel🔊", url="https://t.me/Filmspoterchannel"),
+                        InlineKeyboardButton("💬group💬",url="https://t.me/Filmspoters")
                     ],
                     [
-                        InlineKeyboardButton("1 Dev", url="https://t.me/joinchat/Hn3YHLdbQf04MmM1"),
-                        InlineKeyboardButton("2 Dev", url="https://t.me/darkz_angel")
+                        InlineKeyboardButton("⚒Help⚒",callback_data="help"),
+                        InlineKeyboardButton("😎About😎",callback_data="about")
                     ],
                     [
-                        InlineKeyboardButton("➕ Add Me To Your Group ➕", url="https://t.me/Dqautofl_bot?startgroup=true")
+                        InlineKeyboardButton("👨‍💻Dev👨‍💻", url="https://t.me/filmspoteradmin")
                     ]
                 ]
             )
@@ -175,7 +180,7 @@ async def channel_info(bot, message):
 @Client.on_message(filters.command('total') & filters.user(ADMINS))
 async def total(bot, message):
     """Show total files in database"""
-    msg = await message.reply("Processing...⏳", quote=True)
+    msg = await message.reply("⏳Processing...⏳", quote=True)
     try:
         total = await Media.count_documents()
         await msg.edit(f'📁 Saved files: {total}')
@@ -198,7 +203,7 @@ async def delete(bot, message):
     """Delete file from database"""
     reply = message.reply_to_message
     if reply and reply.media:
-        msg = await message.reply("Processing...⏳", quote=True)
+        msg = await message.reply("⏳Processing...⏳", quote=True)
     else:
         await message.reply('Reply to file with /delete which you want to delete', quote=True)
         return
@@ -224,8 +229,8 @@ async def delete(bot, message):
 async def bot_info(bot, message):
     buttons = [
         [
-            InlineKeyboardButton('Update Channel', url='https://t.me/tg_bots_updates'),
-            InlineKeyboardButton('Source Code', url='https://github.com/Lallu-lallus/ALPHA-AUTO-FILTER-BOT')
+            InlineKeyboardButton('Update Channel', url='https://t.me/mymasterbay'),
+            InlineKeyboardButton('Source Code🙃', url='https://t.me/biriyanikadaaa/4')
         ]
         ]
-    await message.reply(text="Language : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nSource Code : <a href='https://github.com/Lallu-lallus/ALPHA-AUTO-FILTER-BOT'>Click here</a>\nUpdate Channel : <a href='https://t.me/tg_bots_updates'>ALPH_BOTZ</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+    await message.reply(text="Language : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nDEVELOPER👨🏻‍💻 : <a href='https://t.me/ivar_bonel'>₲Ø₭Ʉ₴Ø₦</a>\nUpdate Channel : <a href='https://t.me/mymasterbay'>👉HERE👈</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
